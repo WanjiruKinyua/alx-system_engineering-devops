@@ -1,3 +1,27 @@
 #!/usr/bin/env bash
-#creates an RSA keypair
-ssh-keygen -b 4096 -f school -N betty
+# Script: 1-create_ssh_key_pair
+# Description: This Bash script creates an RSA key pair with a specified name, number of bits, and passphrase.
+
+# Set the name for the private key
+private_key="school"
+
+# Set the number of bits for the key
+key_bits=4096
+
+# Set the passphrase
+passphrase="betty"
+
+# Generate the RSA key pair
+ssh-keygen -t rsa -b $key_bits -f $private_key -N "$passphrase"
+
+# Display the generated key information
+echo "Generating public/private rsa key pair."
+echo "Your identification has been saved in $private_key."
+echo "Your public key has been saved in ${private_key}.pub."
+echo "The key fingerprint is:"
+ssh-keygen -lf $private_key | awk '{print $2}'
+echo "The key's randomart image is:"
+ssh-keygen -lvf $private_key | tail -n +2
+
+# List the files in the current directory
+ls -l

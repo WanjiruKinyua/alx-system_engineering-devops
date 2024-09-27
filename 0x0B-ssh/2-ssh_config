@@ -1,3 +1,10 @@
-Host *
-	passwordAuthentification no
-	IdentityFile ~/.ssh/school
+#!/usr/bin/env bash
+# Configuring SSH client to connect to the server without typing a password
+
+Host your_server_ip
+    # Replace 'your_server_ip' with the actual IP address or hostname of your server
+    HostName 54.89.27.15
+    User ubuntu
+    IdentityFile ~/.ssh/school
+    PreferredAuthentications publickey
+    PasswordAuthentication no
